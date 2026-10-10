@@ -1,0 +1,1547 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IE4032 Assignment 2 - Information Warfare Intelligence Investigation</title>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --success: #16a34a;
+      --success-light: #dcfce7;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --bg-card: #f8fafc;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      line-height: 1.6;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .report-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 50px 65px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+    }
+
+    /* Print styling for 10-15 page formal output */
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .report-container {
+        max-width: 100%;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+      }
+      .page-break { page-break-before: always; }
+      .no-print { display: none; }
+      h1, h2, h3 { page-break-after: avoid; }
+      table { page-break-inside: auto; }
+      tr { page-break-inside: avoid; }
+      thead { display: table-header-group; }
+      .callout, .diagram-frame { page-break-inside: avoid; }
+    }
+
+    /* Header styling */
+    .report-header {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .badge-classified {
+      background: #991b1b;
+      margin-left: 8px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 6px 0;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin: 0 0 16px 0;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: var(--bg-card);
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 12.5px;
+    }
+    .meta-item strong { display: block; color: var(--text-muted); font-size: 10.5px; text-transform: uppercase; }
+
+    /* Typography */
+    h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--primary);
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    p, li { font-size: 13.5px; color: #334155; }
+    ul, ol { padding-left: 22px; }
+    li { margin-bottom: 5px; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 12px;
+      background: #ffffff;
+    }
+    th {
+      background: var(--secondary);
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 10px;
+      font-size: 11.5px;
+      border: 1px solid var(--secondary);
+    }
+    td {
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+    tr:hover td { background: #f1f5f9; }
+
+    /* Callout blocks */
+    .callout {
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 18px 0;
+      font-size: 13px;
+      border-left: 4px solid var(--accent);
+      background: #eff6ff;
+    }
+    .callout-warning {
+      border-left-color: var(--warning);
+      background: var(--warning-light);
+    }
+    .callout-danger {
+      border-left-color: var(--danger);
+      background: var(--danger-light);
+    }
+    .callout-success {
+      border-left-color: var(--success);
+      background: var(--success-light);
+    }
+    .callout-title {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    /* Diagram frame */
+    .diagram-frame {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px 0;
+      background: #0f172a;
+    }
+    .diagram-caption {
+      background: var(--secondary);
+      color: #f8fafc;
+      padding: 8px 14px;
+      font-size: 11.5px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Code & Mono */
+    code, pre {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    code {
+      background: #f1f5f9;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #0f172a;
+    }
+    pre {
+      background: var(--secondary);
+      color: #f8fafc;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    /* Confidence tags */
+    .tag {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .tag-high { background: #dcfce7; color: #166534; }
+    .tag-med { background: #fef3c7; color: #92400e; }
+    .tag-low { background: #fee2e2; color: #991b1b; }
+
+    .tag-verified { background: #dbeafe; color: #1e40af; }
+    .tag-disinfo { background: #fee2e2; color: #b91c1c; }
+    .tag-misinfo { background: #fed7aa; color: #9a3412; }
+    .tag-fake { background: #f3e8ff; color: #6b21a8; }
+  </style>
+</head>
+<body>
+
+<div class="report-container">
+  <!-- Report Header -->
+  <header class="report-header">
+    <span class="badge">Intelligence Assessment</span>
+    <span class="badge badge-classified">Simulation Exercise</span>
+    <h1>INFORMATION WARFARE INTELLIGENCE INVESTIGATION</h1>
+    <div class="subtitle">Comprehensive Technical Analysis of the AsteriaGrid Incident Simulation</div>
+    
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Course</strong> IE4032 - Info Cyberwarfare</div>
+      <div class="meta-item"><strong>Role</strong> Lead Intelligence Analyst</div>
+      <div class="meta-item"><strong>Date</strong> 12 October 2026</div>
+      <div class="meta-item"><strong>Dataset Digest</strong> SHA256: 7c5a0891d4e7...</div>
+    </div>
+  </header>
+
+  <!-- Executive Summary -->
+  <section>
+    <h2>Executive Summary</h2>
+    <div class="callout callout-success">
+      <div class="callout-title">Primary Intelligence Judgment</div>
+      The observed narrative alleging a catastrophic cyberattack and exfiltration of 25,000 customer records from AsteriaGrid is an <strong>unsubstantiated, synthetic influence campaign</strong>. The physical service disruptions coincided exactly with scheduled server maintenance. Circulating claims rely entirely on recycled historical photography, fabricated mock databases, and digitally altered news graphics propagated via synchronized copypasta messaging across 40 accounts. <span class="tag tag-high">Confidence: High</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Analytical Dimension</th>
+          <th>Intelligence Finding</th>
+          <th style="width: 15%;">Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Narrative Origin</strong></td>
+          <td>Earliest dataset occurrence is post <code>P001</code> at 2026-10-12 08:00 UTC by <code>Account_01</code> on Microblog, pairing an unconfirmed intrusion rumor with recycled photograph <code>M01</code>.</td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Propagation Topology</strong></td>
+          <td>Directed citation network (120 nodes, 117 edges) forms a branching tree rooted in <code>P001</code> (115 nodes), with a secondary data-leak branch at <code>P008</code> (4 nodes) and an isolated seed <code>P019</code>.</td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Media Provenance</strong></td>
+          <td>Zero of 8 circulating media artifacts demonstrate compromise: <code>M01</code> is a 2025 archival photo; <code>M03</code> is a synthetic mock database; <code>M05</code> is a fake TV chyron; <code>M06</code> is a routine maintenance status page.</td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Defensive Priority</strong></td>
+          <td>Publish live telemetry verifying portal restoration; avoid repeating breach buzzwords; deploy side-by-side visual debunks of <code>M01</code> and <code>M05</code>; implement C2PA content provenance.</td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 1 -->
+  <section>
+    <h2>1. Scope, Threat Landscape & Methodological Limitations</h2>
+    <p>On 12 October 2026, AsteriaGrid&mdash;a critical utility and infrastructure operator&mdash;experienced intermittent public portal disruptions. Within 20 minutes, an aggressive online campaign alleged that AsteriaGrid's SCADA networks had suffered a catastrophic adversary attack, compromising industrial control systems and exposing 25,000 customer records. This investigation deconstructs narrative development, validates digital evidence, reconstructs propagation networks, and formulates a defensive response.</p>
+    
+    <div class="callout callout-warning">
+      <div class="callout-title">Methodological & Data Caveats</div>
+      <ul>
+        <li><strong>Synthetic Simulation:</strong> All entities, accounts (<code>Account_01</code>&ndash;<code>Account_40</code>), and URLs (<code>example.invalid</code>) are synthetic assessment artifacts. No external infrastructure was probed.</li>
+        <li><strong>Dataset Bounds:</strong> Chronology is bounded by the 120 synthetic posts, 10 registered sources, and 8 media artifacts.</li>
+        <li><strong>Network Metrics Interpretation:</strong> Centrality measures describe mathematical graph position within the citation model; they do not prove real-world psychological persuasion, reach, or off-platform impact.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section>
+    <h2>2. Analytical Methodology & Investigation Workflow</h2>
+    <p>The investigation implemented Intelligence Community Directive (ICD) 203 standards, combining open-source intelligence (OSINT) verification workflows with quantitative social network analysis (SNA):</p>
+    <ol>
+      <li><strong>Cryptographic Ingestion:</strong> Normalized data schema and computed SHA-256 digests across raw CSVs and evidence registers.</li>
+      <li><strong>Chronological Normalization:</strong> Normalized all event timestamps to Universal Time Coordinated (UTC).</li>
+      <li><strong>Directed Graph Modeling:</strong> Formalized directed edge <code>e = (u &rarr; v)</code> where parent post <code>u</code> is cited, retweeted, or replied to by child post <code>v</code>. Calculated Degree Centrality, Betweenness Centrality (Brandes' Algorithm), and PageRank (&alpha; = 0.85).</li>
+      <li><strong>Linguistic Text Clustering:</strong> Grouped text across the corpus, discovering that 120 posts derive from only 14 distinct templates.</li>
+      <li><strong>Media Forensics:</strong> Executed reverse archival searches, Error Level Analysis (ELA), and schema pattern audits on artifacts <code>M01</code>&ndash;<code>M08</code>.</li>
+    </ol>
+  </section>
+
+  <!-- Section 3 -->
+  <section>
+    <h2>3. Evidence Inventory and Classification</h2>
+    <p>Twenty critical evidence items were cataloged and classified under ICD 203 evidence taxonomy:</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 8%;">ID</th>
+          <th style="width: 14%;">Type</th>
+          <th style="width: 14%;">Timestamp</th>
+          <th>Observed Statement / Content</th>
+          <th style="width: 20%;">Classification</th>
+          <th style="width: 8%;">Conf.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>S01</strong></td>
+          <td>Official Statement</td>
+          <td>2026-10-12 09:20</td>
+          <td>Disruption linked to scheduled maintenance; no customer data exposed.</td>
+          <td><span class="tag tag-verified">Verified Info</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S05</strong></td>
+          <td>Status Page</td>
+          <td>2026-10-12 08:45</td>
+          <td>08:10 portal errors; 08:30 maintenance continues; 08:45 recovery monitoring.</td>
+          <td><span class="tag tag-verified">Verified Info</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S10</strong></td>
+          <td>Archive Record</td>
+          <td>2026-10-11 16:00</td>
+          <td>Control room photo <code>M01</code> existed online months prior to incident.</td>
+          <td><span class="tag tag-verified">Verified Info</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S08</strong></td>
+          <td>Analyst Note</td>
+          <td>2026-10-12 14:00</td>
+          <td>Documented identical wording and synchronized posting among cluster.</td>
+          <td><span class="tag tag-verified">Verified Info</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S09</strong></td>
+          <td>Corporate FAQ</td>
+          <td>2026-10-12 15:10</td>
+          <td>Technical maintenance explanation; warns against unverified screenshots.</td>
+          <td><span class="tag tag-verified">Verified Info</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P001</strong></td>
+          <td>Microblog</td>
+          <td>2026-10-12 08:00</td>
+          <td>UNCONFIRMED: AsteriaGrid suffered serious intrusion overnight (with <code>M01</code>).</td>
+          <td><span class="tag tag-misinfo">Misinformation</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P002</strong></td>
+          <td>Forum</td>
+          <td>2026-10-12 08:20</td>
+          <td>This screenshot proves attack. Share before it disappears!</td>
+          <td><span class="tag tag-disinfo">Disinformation</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P003</strong></td>
+          <td>Blog</td>
+          <td>2026-10-12 08:40</td>
+          <td>Company claims services normal, but posts claim otherwise.</td>
+          <td><span class="tag tag-misinfo">Misleading Ctxt</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P005</strong></td>
+          <td>Video Caption</td>
+          <td>2026-10-12 09:20</td>
+          <td>AsteriaGrid is staying silent... What are they hiding? (with <code>M05</code>).</td>
+          <td><span class="tag tag-disinfo">Disinformation</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P006</strong></td>
+          <td>Microblog</td>
+          <td>2026-10-12 09:40</td>
+          <td>Old incident photo being shared again as if it happened today.</td>
+          <td><span class="tag tag-verified">Verified (Debunk)</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P008</strong></td>
+          <td>Blog</td>
+          <td>2026-10-12 09:59</td>
+          <td>I have seen claims customer records are being shared.</td>
+          <td><span class="tag tag-misinfo">Unverified Claim</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P014</strong></td>
+          <td>Community</td>
+          <td>2026-10-12 11:59</td>
+          <td>URGENT: systems breached overnight. No official explanation yet.</td>
+          <td><span class="tag tag-disinfo">Disinformation</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>P019</strong></td>
+          <td>Community</td>
+          <td>2026-10-12 13:18</td>
+          <td>AsteriaGrid systems allegedly compromised. Awaiting confirmation.</td>
+          <td><span class="tag tag-misinfo">Unverified Claim</span></td>
+          <td><span class="tag tag-med">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>P032</strong></td>
+          <td>Forum</td>
+          <td>2026-10-12 16:56</td>
+          <td>AsteriaGrid says there is no evidence of customer-data exposure.</td>
+          <td><span class="tag tag-verified">Verified (Relay)</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S02</strong></td>
+          <td>Digital News</td>
+          <td>2026-10-12 10:05</td>
+          <td>MetroTech Daily: AsteriaGrid allegedly hit by major cyber incident.</td>
+          <td><span class="tag tag-misinfo">Churnalism</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S03</strong></td>
+          <td>Forum Thread</td>
+          <td>2026-10-12 08:22</td>
+          <td>Someone inside says control systems compromised; see screenshot.</td>
+          <td><span class="tag tag-fake">False Authority</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>S04</strong></td>
+          <td>Blog Post</td>
+          <td>2026-10-12 09:47</td>
+          <td>Headline: 25,000 AsteriaGrid records leaked? Links to screenshot <code>M03</code>.</td>
+          <td><span class="tag tag-fake">Fabricated Evid.</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>M01</strong></td>
+          <td>Photograph</td>
+          <td>08:00 UTC</td>
+          <td>Image claimed to show control room under active attack.</td>
+          <td><span class="tag tag-misinfo">Reused / Misleading</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>M03</strong></td>
+          <td>Screenshot</td>
+          <td>09:47 UTC</td>
+          <td>Screenshot claimed to show leaked customer records database.</td>
+          <td><span class="tag tag-fake">Fabricated Evid.</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>M05</strong></td>
+          <td>Image Graphic</td>
+          <td>09:20 UTC</td>
+          <td>Claimed TV breaking-news chyron confirming grid cyber crisis.</td>
+          <td><span class="tag tag-fake">Manipulated Media</span></td>
+          <td><span class="tag tag-high">High</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 4 -->
+  <section>
+    <h2>4. Source and OSINT Claim Verification</h2>
+    <p>Six discrete claims circulating through the threat environment were subjected to end-to-end OSINT verification:</p>
+    
+    <h3>Claim 1 (C01): Control systems suffered a serious adversary intrusion overnight.</h3>
+    <p><strong>Tracing & Earliest Source:</strong> Appeared at 08:00 UTC in post <code>P001</code>. Relies entirely on hearsay without technical indicators of compromise (IoCs).<br>
+    <strong>Primary Contradiction:</strong> Status page <code>S05</code> (08:45 UTC) and official notice <code>S01</code> (09:20 UTC) prove that service instability was restricted to customer-facing web portals due to scheduled database maintenance.<br>
+    <strong>Finding:</strong> <span class="tag tag-disinfo">Inaccurate Rumor</span> | <span class="tag tag-high">Confidence: High</span></p>
+
+    <h3>Claim 2 (C02): 25,000 customer database records were leaked online.</h3>
+    <p><strong>Tracing & Earliest Source:</strong> Originates in blog post <code>S04</code> (09:47 UTC) and post <code>P008</code> (09:59 UTC).<br>
+    <strong>Primary Contradiction:</strong> Forensic audit of <code>M03</code> reveals repetitive placeholder strings (<code>test_user_001</code>) and invalid phone numbers. No database dump was ever released.<br>
+    <strong>Finding:</strong> <span class="tag tag-fake">Fabricated Claim</span> | <span class="tag tag-high">Confidence: High</span></p>
+
+    <h3>Claim 3 (C03): Control room photograph depicts AsteriaGrid under attack.</h3>
+    <p><strong>Tracing & Earliest Source:</strong> Circulated in <code>P001</code> (08:00 UTC) attaching <code>M01</code>; repeated 15 times.<br>
+    <strong>Primary Contradiction:</strong> Historical web archive record <code>S10</code> (2026-10-11 16:00 UTC) proves photograph was published months prior in an unrelated trade journal regarding European power grids.<br>
+    <strong>Finding:</strong> <span class="tag tag-misinfo">Recontextualized Photo</span> | <span class="tag tag-high">Confidence: High</span></p>
+
+    <h3>Claim 4 (C04): Disruption resulted from routine scheduled maintenance.</h3>
+    <p><strong>Tracing & Earliest Source:</strong> Internal maintenance logs documented on status page <code>S05</code> (08:45 UTC) and confirmed in <code>S01</code> and <code>S09</code>.<br>
+    <strong>Corroboration:</strong> Timestamped engineering progression (08:10 portal restart error, 08:30 maintenance ongoing, 08:45 recovery monitoring).<br>
+    <strong>Finding:</strong> <span class="tag tag-verified">Verified Fact</span> | <span class="tag tag-high">Confidence: High</span></p>
+
+    <h3>Claim 5 (C05): National television broadcast confirmed the cyber incident.</h3>
+    <p><strong>Tracing & Earliest Source:</strong> Injected in post <code>P005</code> (09:20 UTC) attaching graphic <code>M05</code>.<br>
+    <strong>Primary Contradiction:</strong> Broadcaster's official news archive shows no such broadcast occurred. Forensic typography analysis confirms altered lower-third text.<br>
+    <strong>Finding:</strong> <span class="tag tag-fake">Manipulated Media</span> | <span class="tag tag-high">Confidence: High</span></p>
+
+    <h3>Claim 6 (C06): Leaked internal chats prove employee panic over hacked turbines.</h3>
+    <p><strong>Tracing & Earliest Source:</strong> Forum thread <code>S03</code> (08:22 UTC) citing screenshot <code>M07</code>.<br>
+    <strong>Primary Contradiction:</strong> Lacks corporate metadata, cryptographic signatures, or verified identities. Easily created via fake chat generators.<br>
+    <strong>Finding:</strong> <span class="tag tag-fake">Unverified / Fake Chat</span> | <span class="tag tag-med">Confidence: Medium-High</span></p>
+  </section>
+
+  <!-- Section 5 -->
+  <section>
+    <h2>5. Timeline Reconstruction</h2>
+    <p>Chronological reconstruction of 16 critical events across the 34-hour observation window:</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 13%;">UTC Time</th>
+          <th style="width: 9%;">ID</th>
+          <th style="width: 14%;">Channel</th>
+          <th>Event / Statement</th>
+          <th style="width: 25%;">Analytical Significance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12-Oct 08:00</td>
+          <td><strong>P001</strong></td>
+          <td>Microblog</td>
+          <td>UNCONFIRMED: Serious intrusion overnight (with <code>M01</code>).</td>
+          <td><strong>Narrative Genesis (Root 1):</strong> Injects breach rumor with reused photo.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 08:20</td>
+          <td><strong>P002</strong></td>
+          <td>Forum</td>
+          <td>Screenshot proves outage. Share before it disappears!</td>
+          <td><strong>Urgency Amplifier:</strong> Manufactures urgency; top hub.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 08:22</td>
+          <td><strong>S03</strong></td>
+          <td>Forum</td>
+          <td>Insider claims control systems compromised.</td>
+          <td><strong>Insider Trope:</strong> Injects false authority.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 08:45</td>
+          <td><strong>S05</strong></td>
+          <td>Status Page</td>
+          <td>08:10 portal error; 08:30 maintenance; 08:45 recovery.</td>
+          <td><strong>Primary Fact:</strong> Proves outage was scheduled maintenance.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 09:20</td>
+          <td><strong>S01</strong></td>
+          <td>Official Notice</td>
+          <td>Intermittent disruption linked to routine maintenance.</td>
+          <td><strong>Official Denial:</strong> First formal corporate refutation.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 09:20</td>
+          <td><strong>P005</strong></td>
+          <td>Video Caption</td>
+          <td>AsteriaGrid is staying silent... What are they hiding? (with <code>M05</code>).</td>
+          <td><strong>Conspiracy Shift:</strong> Introduces altered news chyron <code>M05</code>.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 09:40</td>
+          <td><strong>P006</strong></td>
+          <td>Microblog</td>
+          <td>Old incident photo being shared again as if today.</td>
+          <td><strong>Earliest Debunk:</strong> Organic user identifies <code>M01</code> recycling.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 09:47</td>
+          <td><strong>S04</strong></td>
+          <td>Blog</td>
+          <td>25,000 records leaked? Links to screenshot <code>M03</code>.</td>
+          <td><strong>Data Leak Genesis:</strong> Introduces 25k leak claim.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 09:59</td>
+          <td><strong>P008</strong></td>
+          <td>Blog</td>
+          <td>I have seen claims customer records are shared.</td>
+          <td><strong>Narrative Shift (Root 2):</strong> Shifts rumor to customer privacy.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 10:05</td>
+          <td><strong>S02</strong></td>
+          <td>Digital News</td>
+          <td>MetroTech Daily: AsteriaGrid allegedly hit by cyber incident.</td>
+          <td><strong>Media Laundering:</strong> Mainstream outlet repeats rumors.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 11:59</td>
+          <td><strong>P014</strong></td>
+          <td>Community</td>
+          <td>URGENT: breached overnight. No official explanation yet.</td>
+          <td><strong>False Claim:</strong> Ignores <code>S01</code> issued 2.5 hours earlier.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 13:18</td>
+          <td><strong>P019</strong></td>
+          <td>Community</td>
+          <td>Systems allegedly compromised. Waiting confirmation.</td>
+          <td><strong>Isolated Seed (Root 3):</strong> Injects rumor to community boards.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 14:00</td>
+          <td><strong>S08</strong></td>
+          <td>Analyst Note</td>
+          <td>Notes repetitive wording & synchronized posting cluster.</td>
+          <td><strong>Third-Party Recognition:</strong> Detects inauthentic behavior.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 15:10</td>
+          <td><strong>S09</strong></td>
+          <td>Corporate FAQ</td>
+          <td>Maintenance explanation; warns against fake screenshots.</td>
+          <td><strong>Defensive Guidance:</strong> Comprehensive corporate advisory.</td>
+        </tr>
+        <tr>
+          <td>12-Oct 16:56</td>
+          <td><strong>P032</strong></td>
+          <td>Forum</td>
+          <td>AsteriaGrid says there is no evidence of data exposure.</td>
+          <td><strong>Factual Relay:</strong> Rare organic quote of company notice.</td>
+        </tr>
+        <tr>
+          <td>13-Oct 17:44</td>
+          <td><strong>P119</strong></td>
+          <td>Community</td>
+          <td>A news-style page says thousands of records were leaked.</td>
+          <td><strong>Persistence Phase:</strong> Automated copypasta circulates 33h later.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 6: Network Analysis -->
+  <section>
+    <h2>6. Information Propagation and Network Analysis</h2>
+    <p>Network modeling of the 120 posts revealed a strict directed tree structure (<em>N</em> = 120, <em>E</em> = 117). A directed edge connects parent post <em>u</em> to child post <em>v</em>. The network is dominated by a primary cluster rooted in <code>P001</code> (115 nodes), accompanied by secondary root <code>P008</code> (4 nodes) and isolated post <code>P019</code>.</p>
+    
+    <div class="diagram-frame">
+      <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 950" width="100%" height="100%">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="16" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+    <marker id="arrow-high" viewBox="0 0 10 10" refX="18" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48" />
+    </marker>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="1600" height="950" fill="url(#bg)" />
+  <text x="50" y="45" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#f8fafc">AsteriaGrid Information Warfare Propagation Network (N=120, E=117)</text>
+  <text x="50" y="70" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Directed information diffusion graph (Parent -&gt; Child). Nodes sized by PageRank and colored by Out-Degree amplification hub status.</text>
+  <g transform="translate(1080, 25)">
+    <rect x="0" y="0" width="480" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <circle cx="20" cy="20" r="7" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="35" y="24" font-family="sans-serif" font-size="11" fill="#f8fafc">Primary Hub (Out-Degree &ge; 4)</text>
+    <circle cx="195" cy="20" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1"/>
+    <text x="208" y="24" font-family="sans-serif" font-size="11" fill="#f8fafc">Secondary Hub (Out-Deg = 3)</text>
+    <circle cx="360" cy="20" r="5" fill="#38bdf8" stroke="#ffffff" stroke-width="1"/>
+    <text x="372" y="24" font-family="sans-serif" font-size="11" fill="#f8fafc">Leaf / Relay Node</text>
+    <circle cx="20" cy="42" r="5" fill="#a855f7" stroke="#ffffff" stroke-width="1"/>
+    <text x="35" y="45" font-family="sans-serif" font-size="11" fill="#f8fafc">Origin / Root Seed (P001, P008, P019)</text>
+    <line x1="260" y1="42" x2="300" y2="42" stroke="#e11d48" stroke-width="2" marker-end="url(#arrow-high)"/>
+    <text x="310" y="45" font-family="sans-serif" font-size="11" fill="#f8fafc">Major Propagation Path</text>
+  </g>
+  <line x1="160" y1="292.5" x2="231.1" y2="356.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="160" y1="292.5" x2="231.1" y2="228.3" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="800" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="590" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="730" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="660" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="450" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="380" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="580" y1="450" x2="373.3" y2="271.1" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="310" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="580" y1="380" x2="760" y2="698.9" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="660" x2="760" y2="784.4" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="160" y1="292.5" x2="400" y2="613.3" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="160" y1="292.5" x2="400" y2="741.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="520" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="220" y1="835" x2="400" y2="860" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="271.1" x2="444.4" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="590" x2="760" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="310" x2="373.3" y2="185.6" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="356.7" x2="515.6" y2="196.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="400" y1="613.3" x2="580" y2="240" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="196.2" x2="586.7" y2="485" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="400" y1="860" x2="580" y2="810" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="271.1" x2="444.4" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="520" x2="373.3" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="810" x2="760" y2="885" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="240" x2="760" y2="527.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="196.2" x2="586.7" y2="562" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="356.7" x2="515.6" y2="581.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="196.2" x2="586.7" y2="331" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="356.7" x2="444.4" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="185.6" x2="444.4" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="185.6" x2="444.4" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="331" x2="657.8" y2="793" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="485" x2="657.8" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="485" x2="515.6" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="741.7" x2="515.6" y2="292.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="331" x2="657.8" y2="254" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="613.3" x2="515.6" y2="677.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="254" x2="728.9" y2="430" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="562" x2="657.8" y2="562" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="254" x2="728.9" y2="760" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="581.2" x2="586.7" y2="177" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="292.5" x2="586.7" y2="716" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="430" x2="800" y2="800" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="485" x2="586.7" y2="639" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="228.3" x2="515.6" y2="388.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="228.3" x2="515.6" y2="773.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="430" x2="800" y2="590" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="177" x2="657.8" y2="408" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="292.5" x2="586.7" y2="408" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="177" x2="657.8" y2="331" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="430" x2="800" y2="520" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="408" x2="728.9" y2="210" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="388.8" x2="586.7" y2="254" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="210" x2="800" y2="310" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="331" x2="728.9" y2="540" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="388.8" x2="586.7" y2="793" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="210" x2="800" y2="380" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="254" x2="657.8" y2="639" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="408" x2="657.8" y2="177" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="210" x2="800" y2="660" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="800" y1="590" x2="871.1" y2="698.9" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="520" x2="871.1" y2="271.1" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="310" x2="871.1" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="254" x2="657.8" y2="716" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="356.7" x2="942.2" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="271.1" x2="942.2" y2="677.5" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="177" x2="728.9" y2="320" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="177" x2="728.9" y2="650" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="356.7" x2="942.2" y2="164.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="540" x2="800" y2="240" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="271.1" x2="942.2" y2="292.5" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="800" y1="380" x2="871.1" y2="442.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="320" x2="800" y2="450" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="800" y1="240" x2="871.1" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="320" x2="800" y2="730" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="271.1" x2="942.2" y2="228.3" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="320" x2="800" y2="170" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="442.2" x2="942.2" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="164.2" x2="1013.3" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="228.3" x2="1084.4" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="170" x2="871.1" y2="784.4" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="408" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="942.2" y1="292.5" x2="1013.3" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="228.3" x2="1013.3" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="450" x2="871.1" y2="185.6" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="170" x2="871.1" y2="527.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="228.3" x2="1084.4" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="741.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="420.8" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="805.8" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1155.6" y1="408" x2="1226.7" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="331" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1155.6" y1="331" x2="1226.7" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="793" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="716" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1013.3" y1="485" x2="1084.4" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="356.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1084.4" y1="485" x2="1155.6" y2="177" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="356.7" x2="1155.6" y2="254" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="527.8" x2="942.2" y2="549.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="356.7" x2="1013.3" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1155.6" y1="177" x2="1226.7" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="356.7" x2="1084.4" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="356.7" x2="1155.6" y2="562" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="420.8" x2="1013.3" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1226.7" y1="356.7" x2="1297.8" y2="677.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1155.6" y1="254" x2="1226.7" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1226.7" y1="485" x2="1297.8" y2="292.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="356.7" x2="1155.6" y2="639" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="613.3" x2="1155.6" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1297.8" y1="292.5" x2="1368.9" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="356.7" x2="1084.4" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1368.9" y1="485" x2="1440" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1155.6" y1="177" x2="1226.7" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1226.7" y1="228.3" x2="1297.8" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <circle cx="871.1" cy="185.6" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P090 | Account_32 | Video Caption | Out-Deg: 4 | PR: 0.009702</title>
+  </circle>
+  <text x="871.1" y="169.6" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P090 (Account_32)</text>
+  <circle cx="1084.4" cy="228.3" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P085 | Account_37 | Video Caption | Out-Deg: 4 | PR: 0.00887</title>
+  </circle>
+  <text x="1084.4" y="212.3" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P085 (Account_37)</text>
+  <circle cx="231.1" cy="228.3" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P003 | Account_15 | Blog | Out-Deg: 4 | PR: 0.00495</title>
+  </circle>
+  <text x="231.1" y="212.3" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P003 (Account_15)</text>
+  <circle cx="231.1" cy="356.7" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P002 | Account_08 | Forum | Out-Deg: 4 | PR: 0.00495</title>
+  </circle>
+  <text x="231.1" y="340.7" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P002 (Account_08)</text>
+  <circle cx="160" cy="292.5" r="12" fill="#a855f7" stroke="#f3e8ff" stroke-width="1.5">
+    <title>P001 | Account_01 | Microblog | Out-Deg: 4 | PR: 0.004083</title>
+  </circle>
+  <text x="160" y="275.5" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P001 (Account_01)</text>
+  <circle cx="1084.4" cy="356.7" r="9.6" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P101 | Account_31 | Microblog | Out-Deg: 3 | PR: 0.012391</title>
+  </circle>
+  <text x="1084.4" y="342.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P101 (Account_31)</text>
+  <circle cx="728.9" cy="210" r="9.1" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P057 | Account_38 | Forum | Out-Deg: 3 | PR: 0.011283</title>
+  </circle>
+  <text x="728.9" y="195.9" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P057 (Account_38)</text>
+  <circle cx="871.1" cy="271.1" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P067 | Account_29 | Forum | Out-Deg: 3 | PR: 0.009223</title>
+  </circle>
+  <text x="871.1" y="257.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P067 (Account_29)</text>
+  <circle cx="728.9" cy="320" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P072 | Account_25 | Forum | Out-Deg: 3 | PR: 0.008921</title>
+  </circle>
+  <text x="728.9" y="306" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P072 (Account_25)</text>
+  <circle cx="515.6" cy="196.2" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P023 | Account_37 | Blog | Out-Deg: 3 | PR: 0.007344</title>
+  </circle>
+  <text x="515.6" y="182.2" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P023 (Account_37)</text>
+  <circle cx="728.9" cy="430" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P043 | Account_19 | Blog | Out-Deg: 3 | PR: 0.006931</title>
+  </circle>
+  <text x="728.9" y="416" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P043 (Account_19)</text>
+  <circle cx="1155.6" cy="177" r="9.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P103 | Account_05 | Blog | Out-Deg: 2 | PR: 0.011622</title>
+  </circle>
+  <circle cx="657.8" cy="177" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P064 | Account_08 | Community Page | Out-Deg: 2 | PR: 0.011384</title>
+  </circle>
+  <circle cx="1013.3" cy="228.3" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P084 | Account_30 | Community Page | Out-Deg: 2 | PR: 0.011264</title>
+  </circle>
+  <circle cx="515.6" cy="292.5" r="8.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P040 | Account_37 | Video Caption | Out-Deg: 2 | PR: 0.010605</title>
+  </circle>
+  <circle cx="586.7" cy="177" r="8.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P046 | Account_40 | Microblog | Out-Deg: 2 | PR: 0.010325</title>
+  </circle>
+  <circle cx="871.1" cy="356.7" r="8.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P068 | Account_36 | Blog | Out-Deg: 2 | PR: 0.010271</title>
+  </circle>
+  <circle cx="1013.3" cy="356.7" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P106 | Account_26 | Microblog | Out-Deg: 2 | PR: 0.009306</title>
+  </circle>
+  <circle cx="373.3" cy="185.6" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P022 | Account_30 | Forum | Out-Deg: 2 | PR: 0.008448</title>
+  </circle>
+  <circle cx="373.3" cy="271.1" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P011 | Account_32 | Microblog | Out-Deg: 2 | PR: 0.008448</title>
+  </circle>
+  <circle cx="444.4" cy="228.3" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P036 | Account_09 | Microblog | Out-Deg: 2 | PR: 0.007673</title>
+  </circle>
+  <circle cx="444.4" cy="356.7" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P020 | Account_15 | Video Caption | Out-Deg: 2 | PR: 0.007673</title>
+  </circle>
+  <circle cx="515.6" cy="388.8" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P050 | Account_28 | Video Caption | Out-Deg: 2 | PR: 0.007344</title>
+  </circle>
+  <circle cx="586.7" cy="254" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P058 | Account_05 | Blog | Out-Deg: 2 | PR: 0.007204</title>
+  </circle>
+  <circle cx="657.8" cy="254" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P041 | Account_05 | Microblog | Out-Deg: 2 | PR: 0.006702</title>
+  </circle>
+  <circle cx="800" cy="170" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P082 | Account_16 | Forum | Out-Deg: 2 | PR: 0.006611</title>
+  </circle>
+  <circle cx="586.7" cy="331" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P033 | Account_28 | Blog | Out-Deg: 2 | PR: 0.006164</title>
+  </circle>
+  <circle cx="1368.9" cy="485" r="10.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P116 | Account_17 | Microblog | Out-Deg: 1 | PR: 0.014072</title>
+  </circle>
+  <circle cx="800" cy="240" r="10.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P075 | Account_06 | Video Caption | Out-Deg: 1 | PR: 0.013674</title>
+  </circle>
+  <circle cx="515.6" cy="485" r="10.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P039 | Account_30 | Community Page | Out-Deg: 1 | PR: 0.013657</title>
+  </circle>
+  <circle cx="1297.8" cy="292.5" r="9.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P113 | Account_36 | Blog | Out-Deg: 1 | PR: 0.011752</title>
+  </circle>
+  <circle cx="728.9" cy="540" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P060 | Account_19 | Video Caption | Out-Deg: 1 | PR: 0.011283</title>
+  </circle>
+  <circle cx="444.4" cy="485" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P034 | Account_35 | Community Page | Out-Deg: 1 | PR: 0.011263</title>
+  </circle>
+  <circle cx="1226.7" cy="228.3" r="8.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P112 | Account_29 | Forum | Out-Deg: 1 | PR: 0.010538</title>
+  </circle>
+  <circle cx="580" cy="810" r="8.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P026 | Account_18 | Microblog | Out-Deg: 1 | PR: 0.010503</title>
+  </circle>
+  <circle cx="871.1" cy="442.2" r="8.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P077 | Account_20 | Forum | Out-Deg: 1 | PR: 0.010271</title>
+  </circle>
+  <circle cx="1013.3" cy="485" r="8.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P088 | Account_18 | Blog | Out-Deg: 1 | PR: 0.009774</title>
+  </circle>
+  <circle cx="1226.7" cy="356.7" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P098 | Account_09 | Blog | Out-Deg: 1 | PR: 0.009155</title>
+  </circle>
+  <circle cx="1226.7" cy="485" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P107 | Account_33 | Forum | Out-Deg: 1 | PR: 0.009022</title>
+  </circle>
+  <circle cx="1084.4" cy="485" r="8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P092 | Account_07 | Forum | Out-Deg: 1 | PR: 0.00887</title>
+  </circle>
+  <circle cx="586.7" cy="408" r="7.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P054 | Account_17 | Community Page | Out-Deg: 1 | PR: 0.00859</title>
+  </circle>
+  <circle cx="657.8" cy="331" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P055 | Account_24 | Video Caption | Out-Deg: 1 | PR: 0.008471</title>
+  </circle>
+  <circle cx="657.8" cy="408" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P053 | Account_10 | Blog | Out-Deg: 1 | PR: 0.008471</title>
+  </circle>
+  <circle cx="373.3" cy="356.7" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P028 | Account_32 | Blog | Out-Deg: 1 | PR: 0.008448</title>
+  </circle>
+  <circle cx="942.2" cy="164.2" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P074 | Account_39 | Community Page | Out-Deg: 1 | PR: 0.008448</title>
+  </circle>
+  <circle cx="580" cy="240" r="7.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P024 | Account_04 | Community Page | Out-Deg: 1 | PR: 0.008291</title>
+  </circle>
+  <circle cx="1084.4" cy="613.3" r="7.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P108 | Account_40 | Blog | Out-Deg: 1 | PR: 0.008038</title>
+  </circle>
+  <circle cx="444.4" cy="613.3" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P027 | Account_25 | Forum | Out-Deg: 1 | PR: 0.007673</title>
+  </circle>
+  <circle cx="444.4" cy="741.7" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P035 | Account_02 | Video Caption | Out-Deg: 1 | PR: 0.007673</title>
+  </circle>
+  <circle cx="1155.6" cy="254" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P104 | Account_12 | Community Page | Out-Deg: 1 | PR: 0.007594</title>
+  </circle>
+  <circle cx="400" cy="860" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P018 | Account_01 | Blog | Out-Deg: 1 | PR: 0.007553</title>
+  </circle>
+  <circle cx="515.6" cy="581.2" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P032 | Account_21 | Forum | Out-Deg: 1 | PR: 0.007344</title>
+  </circle>
+  <text x="515.6" y="568.9" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P032 (Account_21)</text>
+  <circle cx="800" cy="310" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P059 | Account_12 | Community Page | Out-Deg: 1 | PR: 0.00728</title>
+  </circle>
+  <circle cx="800" cy="380" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P062 | Account_34 | Forum | Out-Deg: 1 | PR: 0.00728</title>
+  </circle>
+  <circle cx="871.1" cy="527.8" r="7.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P091 | Account_40 | Microblog | Out-Deg: 1 | PR: 0.006892</title>
+  </circle>
+  <circle cx="942.2" cy="228.3" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P081 | Account_09 | Microblog | Out-Deg: 1 | PR: 0.006696</title>
+  </circle>
+  <circle cx="942.2" cy="292.5" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P076 | Account_13 | Microblog | Out-Deg: 1 | PR: 0.006696</title>
+  </circle>
+  <circle cx="800" cy="450" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P078 | Account_27 | Blog | Out-Deg: 1 | PR: 0.006611</title>
+  </circle>
+  <circle cx="586.7" cy="485" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P025 | Account_11 | Video Caption | Out-Deg: 1 | PR: 0.006164</title>
+  </circle>
+  <circle cx="586.7" cy="562" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P031 | Account_14 | Microblog | Out-Deg: 1 | PR: 0.006164</title>
+  </circle>
+  <circle cx="942.2" cy="356.7" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P102 | Account_38 | Forum | Out-Deg: 1 | PR: 0.006145</title>
+  </circle>
+  <circle cx="942.2" cy="420.8" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P094 | Account_21 | Community Page | Out-Deg: 1 | PR: 0.006145</title>
+  </circle>
+  <circle cx="800" cy="520" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P056 | Account_31 | Microblog | Out-Deg: 1 | PR: 0.006047</title>
+  </circle>
+  <circle cx="800" cy="590" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P052 | Account_03 | Forum | Out-Deg: 1 | PR: 0.006047</title>
+  </circle>
+  <circle cx="1155.6" cy="331" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P097 | Account_02 | Forum | Out-Deg: 1 | PR: 0.005968</title>
+  </circle>
+  <circle cx="1155.6" cy="408" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P087 | Account_11 | Forum | Out-Deg: 1 | PR: 0.005968</title>
+  </circle>
+  <circle cx="580" cy="310" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P012 | Account_39 | Forum | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="380" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P010 | Account_24 | Video Caption | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="450" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P009 | Account_17 | Community Page | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="520" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P017 | Account_34 | Forum | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="590" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P005 | Account_29 | Video Caption | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="660" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P007 | Account_03 | Forum | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="400" cy="613.3" r="6.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P015 | Account_20 | Video Caption | Out-Deg: 1 | PR: 0.00495</title>
+  </circle>
+  <circle cx="220" cy="835" r="12" fill="#a855f7" stroke="#f3e8ff" stroke-width="1.5">
+    <title>P008 | Account_10 | Blog | Out-Deg: 1 | PR: 0.004083</title>
+  </circle>
+  <text x="220" y="818" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P008 (Account_10)</text>
+  <circle cx="1440" cy="485" r="11.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P118 | Account_31 | Blog | Out-Deg: 0 | PR: 0.016044</title>
+  </circle>
+  <circle cx="871.1" cy="613.3" r="11.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P079 | Account_34 | Community Page | Out-Deg: 0 | PR: 0.015706</title>
+  </circle>
+  <circle cx="586.7" cy="639" r="11.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P049 | Account_21 | Community Page | Out-Deg: 0 | PR: 0.015691</title>
+  </circle>
+  <circle cx="1297.8" cy="485" r="9.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P120 | Account_05 | Video Caption | Out-Deg: 0 | PR: 0.01304</title>
+  </circle>
+  <circle cx="760" cy="885" r="9.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P029 | Account_39 | Community Page | Out-Deg: 0 | PR: 0.013011</title>
+  </circle>
+  <circle cx="942.2" cy="485" r="9.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P083 | Account_23 | Blog | Out-Deg: 0 | PR: 0.012813</title>
+  </circle>
+  <circle cx="1297.8" cy="677.5" r="9.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P111 | Account_22 | Microblog | Out-Deg: 0 | PR: 0.011865</title>
+  </circle>
+  <circle cx="760" cy="527.8" r="9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P030 | Account_06 | Video Caption | Out-Deg: 0 | PR: 0.01113</title>
+  </circle>
+  <circle cx="1155.6" cy="485" r="8.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P115 | Account_10 | Video Caption | Out-Deg: 0 | PR: 0.010915</title>
+  </circle>
+  <circle cx="515.6" cy="677.5" r="8.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P042 | Account_12 | Forum | Out-Deg: 0 | PR: 0.010605</title>
+  </circle>
+  <circle cx="942.2" cy="549.2" r="8.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P105 | Account_19 | Video Caption | Out-Deg: 0 | PR: 0.009941</title>
+  </circle>
+  <circle cx="1013.3" cy="613.3" r="8.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P089 | Account_25 | Community Page | Out-Deg: 0 | PR: 0.009774</title>
+  </circle>
+  <circle cx="657.8" cy="485" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P038 | Account_23 | Blog | Out-Deg: 0 | PR: 0.009322</title>
+  </circle>
+  <circle cx="657.8" cy="562" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P044 | Account_26 | Community Page | Out-Deg: 0 | PR: 0.009322</title>
+  </circle>
+  <circle cx="1013.3" cy="741.7" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P110 | Account_14 | Video Caption | Out-Deg: 0 | PR: 0.009306</title>
+  </circle>
+  <circle cx="871.1" cy="698.9" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P066 | Account_22 | Microblog | Out-Deg: 0 | PR: 0.009223</title>
+  </circle>
+  <circle cx="1226.7" cy="613.3" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P096 | Account_35 | Microblog | Out-Deg: 0 | PR: 0.009155</title>
+  </circle>
+  <circle cx="1226.7" cy="741.7" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P119 | Account_38 | Community Page | Out-Deg: 0 | PR: 0.009022</title>
+  </circle>
+  <circle cx="728.9" cy="650" r="8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P073 | Account_32 | Blog | Out-Deg: 0 | PR: 0.008921</title>
+  </circle>
+  <circle cx="586.7" cy="716" r="7.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P047 | Account_07 | Forum | Out-Deg: 0 | PR: 0.00859</title>
+  </circle>
+  <circle cx="760" cy="613.3" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P021 | Account_23 | Microblog | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="942.2" cy="613.3" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P070 | Account_10 | Video Caption | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="760" cy="698.9" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P013 | Account_06 | Blog | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="760" cy="784.4" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P014 | Account_13 | Community Page | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="1084.4" cy="741.7" r="7.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P117 | Account_24 | Forum | Out-Deg: 0 | PR: 0.008038</title>
+  </circle>
+  <circle cx="1155.6" cy="562" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P109 | Account_07 | Community Page | Out-Deg: 0 | PR: 0.007594</title>
+  </circle>
+  <circle cx="1155.6" cy="639" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P114 | Account_03 | Community Page | Out-Deg: 0 | PR: 0.007594</title>
+  </circle>
+  <circle cx="515.6" cy="773.8" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P051 | Account_36 | Microblog | Out-Deg: 0 | PR: 0.007344</title>
+  </circle>
+  <circle cx="800" cy="660" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P065 | Account_15 | Video Caption | Out-Deg: 0 | PR: 0.00728</title>
+  </circle>
+  <circle cx="586.7" cy="793" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P061 | Account_27 | Microblog | Out-Deg: 0 | PR: 0.007204</title>
+  </circle>
+  <circle cx="657.8" cy="639" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P063 | Account_01 | Blog | Out-Deg: 0 | PR: 0.007145</title>
+  </circle>
+  <circle cx="657.8" cy="716" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P069 | Account_03 | Community Page | Out-Deg: 0 | PR: 0.007145</title>
+  </circle>
+  <circle cx="728.9" cy="760" r="7.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P045 | Account_33 | Video Caption | Out-Deg: 0 | PR: 0.006931</title>
+  </circle>
+  <circle cx="871.1" cy="784.4" r="7.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P086 | Account_04 | Microblog | Out-Deg: 0 | PR: 0.006892</title>
+  </circle>
+  <circle cx="657.8" cy="793" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P037 | Account_16 | Forum | Out-Deg: 0 | PR: 0.006702</title>
+  </circle>
+  <circle cx="942.2" cy="677.5" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P071 | Account_18 | Microblog | Out-Deg: 0 | PR: 0.006696</title>
+  </circle>
+  <circle cx="800" cy="730" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P080 | Account_01 | Video Caption | Out-Deg: 0 | PR: 0.006611</title>
+  </circle>
+  <circle cx="942.2" cy="741.7" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P093 | Account_14 | Blog | Out-Deg: 0 | PR: 0.006145</title>
+  </circle>
+  <circle cx="942.2" cy="805.8" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P095 | Account_28 | Video Caption | Out-Deg: 0 | PR: 0.006145</title>
+  </circle>
+  <circle cx="800" cy="800" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P048 | Account_14 | Blog | Out-Deg: 0 | PR: 0.006047</title>
+  </circle>
+  <circle cx="1155.6" cy="716" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P100 | Account_23 | Video Caption | Out-Deg: 0 | PR: 0.005968</title>
+  </circle>
+  <circle cx="1155.6" cy="793" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P099 | Account_16 | Community Page | Out-Deg: 0 | PR: 0.005968</title>
+  </circle>
+  <circle cx="580" cy="730" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P006 | Account_36 | Microblog | Out-Deg: 0 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="800" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P004 | Account_22 | Community Page | Out-Deg: 0 | PR: 0.005135</title>
+  </circle>
+  <circle cx="400" cy="741.7" r="6.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P016 | Account_27 | Microblog | Out-Deg: 0 | PR: 0.00495</title>
+  </circle>
+  <circle cx="180" cy="880" r="12" fill="#a855f7" stroke="#f3e8ff" stroke-width="1.5">
+    <title>P019 | Account_08 | Community Page | Out-Deg: 0 | PR: 0.004083</title>
+  </circle>
+  <text x="180" y="863" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P019 (Account_08)</text>
+  <g transform="translate(50, 110)">
+    <rect x="0" y="0" width="220" height="95" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2" opacity="0.95"/>
+    <text x="12" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#a5b4fc">NARRATIVE ORIGIN: P001</text>
+    <text x="12" y="38" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Time: 2026-10-12 08:00 UTC</text>
+    <text x="12" y="54" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Account_01 (Microblog)</text>
+    <text x="12" y="70" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Out-Degree: 4 | Attached: M01</text>
+    <text x="12" y="86" font-family="sans-serif" font-size="9" fill="#93c5fd">Subtree covers 115 / 120 nodes</text>
+  </g>
+  <g transform="translate(50, 780)">
+    <rect x="0" y="0" width="220" height="85" rx="6" fill="#3b0764" stroke="#c084fc" stroke-width="1.2" opacity="0.95"/>
+    <text x="12" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#e9d5ff">DATA LEAK MUTATION: P008</text>
+    <text x="12" y="38" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Time: 2026-10-12 09:59 UTC</text>
+    <text x="12" y="54" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Account_10 (Blog)</text>
+    <text x="12" y="70" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">"customer records shared"</text>
+  </g>
+</svg>
+
+      <div class="diagram-caption">Figure 1: Standalone Vector Graph of AsteriaGrid Information Propagation Network (N=120, E=117). Nodes colored by Out-Degree amplification hub status and sized by PageRank.</div>
+    </div>
+
+    <h3>Top Amplification Hubs (Out-Degree Centrality)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Post ID</th>
+          <th>Author Account</th>
+          <th>Channel</th>
+          <th>Out-Degree (k<sub>out</sub>)</th>
+          <th>In-Degree (k<sub>in</sub>)</th>
+          <th>PageRank (PR)</th>
+          <th>Attached Media</th>
+          <th>Core Template Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>P090</strong></td>
+          <td><code>Account_32</code></td>
+          <td>Video Caption</td>
+          <td><strong>4</strong></td>
+          <td>1</td>
+          <td>0.009702</td>
+          <td>None</td>
+          <td>A news-style page says thousands of records leaked...</td>
+        </tr>
+        <tr>
+          <td><strong>P085</strong></td>
+          <td><code>Account_37</code></td>
+          <td>Video Caption</td>
+          <td><strong>4</strong></td>
+          <td>1</td>
+          <td>0.008870</td>
+          <td><code>M05</code></td>
+          <td>AsteriaGrid is staying silent... What are they hiding?</td>
+        </tr>
+        <tr>
+          <td><strong>P003</strong></td>
+          <td><code>Account_15</code></td>
+          <td>Blog</td>
+          <td><strong>4</strong></td>
+          <td>1</td>
+          <td>0.004950</td>
+          <td>None</td>
+          <td>AsteriaGrid says services operating normally, but...</td>
+        </tr>
+        <tr>
+          <td><strong>P001</strong></td>
+          <td><code>Account_01</code></td>
+          <td>Microblog</td>
+          <td><strong>4</strong></td>
+          <td>0</td>
+          <td>0.004083</td>
+          <td><code>M01</code></td>
+          <td>UNCONFIRMED: Serious intrusion overnight...</td>
+        </tr>
+        <tr>
+          <td><strong>P002</strong></td>
+          <td><code>Account_08</code></td>
+          <td>Forum</td>
+          <td><strong>4</strong></td>
+          <td>1</td>
+          <td>0.004950</td>
+          <td>None</td>
+          <td>This screenshot proves outage caused by attack...</td>
+        </tr>
+        <tr>
+          <td><strong>P067</strong></td>
+          <td><code>Account_29</code></td>
+          <td>Forum</td>
+          <td><strong>3</strong></td>
+          <td>1</td>
+          <td>0.009223</td>
+          <td>None</td>
+          <td>AsteriaGrid says services operating normally, but...</td>
+        </tr>
+        <tr>
+          <td><strong>P023</strong></td>
+          <td><code>Account_37</code></td>
+          <td>Blog</td>
+          <td><strong>3</strong></td>
+          <td>1</td>
+          <td>0.007344</td>
+          <td>None</td>
+          <td>A news-style page says thousands of records leaked...</td>
+        </tr>
+        <tr>
+          <td><strong>P072</strong></td>
+          <td><code>Account_25</code></td>
+          <td>Forum</td>
+          <td><strong>3</strong></td>
+          <td>1</td>
+          <td>0.008921</td>
+          <td>None</td>
+          <td>People saying customer info already online...</td>
+        </tr>
+        <tr>
+          <td><strong>P101</strong></td>
+          <td><code>Account_31</code></td>
+          <td>Microblog</td>
+          <td><strong>3</strong></td>
+          <td>1</td>
+          <td>0.012391</td>
+          <td><code>M05</code></td>
+          <td>AsteriaGrid is staying silent... What are they hiding?</td>
+        </tr>
+        <tr>
+          <td><strong>P057</strong></td>
+          <td><code>Account_38</code></td>
+          <td>Forum</td>
+          <td><strong>3</strong></td>
+          <td>1</td>
+          <td>0.011283</td>
+          <td><code>M01</code></td>
+          <td>Old incident photo being shared again as if today.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 7 -->
+  <section>
+    <h2>7. Narrative and Influence Techniques</h2>
+    <p>Automated textual clustering established that the 120 posts contain only <strong>14 unique templates</strong>, demonstrating deliberate message repetition and astroturfing patterns.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Technique</th>
+          <th style="width: 25%;">Observed Evidence</th>
+          <th>Cognitive Mechanism</th>
+          <th style="width: 20%;">Alternative Reading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Fear Appeal & Urgency</strong></td>
+          <td><code>P002</code>: "Share before it disappears!"<br><code>P014</code>: "URGENT: reports say breached overnight."</td>
+          <td>Induces panic and fear of institutional censorship to force uncritical, viral sharing.</td>
+          <td>Reactive citizen alarm during an unexplained outage.</td>
+        </tr>
+        <tr>
+          <td><strong>Message Repetition</strong></td>
+          <td>14 templates repeated 120 times across 40 accounts; <code>P002</code> repeated 15 times.</td>
+          <td>Exploits the <em>Illusory Truth Effect</em>: repetitive exposure increases perceived truth value.</td>
+          <td>Users copying popular phrases in an online echo chamber.</td>
+        </tr>
+        <tr>
+          <td><strong>Decontextualization</strong></td>
+          <td><code>M01</code> attached to 15 posts (<code>P001</code>, <code>P009</code>, <code>P017</code>, etc.).</td>
+          <td>Pairs genuine photography of an unrelated power plant with false claims of an active disaster.</td>
+          <td>Careless use of generic stock imagery.</td>
+        </tr>
+        <tr>
+          <td><strong>False Authority</strong></td>
+          <td><code>S03</code> forum thread: "Someone inside says systems compromised."</td>
+          <td>Appeals to anonymous "insiders" to grant fake credibility to fabricated claims.</td>
+          <td>Internet prankster claiming insider status for attention.</td>
+        </tr>
+        <tr>
+          <td><strong>Fabricated Evidence</strong></td>
+          <td><code>S04</code> blog & <code>M03</code> screenshot of 25,000 records.</td>
+          <td>Manufactures synthetic database tables to provide visual "proof" for non-existent leaks.</td>
+          <td>Scammer attempting to sell fake customer leads.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 8 -->
+  <section>
+    <h2>8. Media Verification and Forensic Analysis</h2>
+    <p>Forensic examination was executed on all eight registered media artifacts:</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 8%;">ID</th>
+          <th style="width: 18%;">Filename</th>
+          <th style="width: 20%;">Status</th>
+          <th>Forensic Indicators & Method</th>
+          <th style="width: 20%;">Evidentiary Limitation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>M01</strong></td>
+          <td><code>power_control_room.jpg</code></td>
+          <td><span class="tag tag-misinfo">Reused / Misleading</span></td>
+          <td>Matched archive record <code>S10</code> (2026-10-11 16:00 UTC). Photo predates incident by months.</td>
+          <td>Image is authentic, but attribution to AsteriaGrid is false.</td>
+        </tr>
+        <tr>
+          <td><strong>M02</strong></td>
+          <td><code>error_dashboard.png</code></td>
+          <td><span class="tag tag-fake">Unverified / Generic</span></td>
+          <td>Lacks hostnames, domain markers, or unique identifiers. Matches open-source training UIs.</td>
+          <td>Cannot prove malicious forgery, but possesses zero proof value.</td>
+        </tr>
+        <tr>
+          <td><strong>M03</strong></td>
+          <td><code>leak_sample.png</code></td>
+          <td><span class="tag tag-fake">Likely Fabricated</span></td>
+          <td>Contains synthetic placeholder text (<code>test_user_001</code>) and sequential phone numbers.</td>
+          <td>Raw SQL dump was never provided.</td>
+        </tr>
+        <tr>
+          <td><strong>M04</strong></td>
+          <td><code>maintenance_notice.png</code></td>
+          <td><span class="tag tag-fake">Questionable Format</span></td>
+          <td>Typography, margins, and layout deviate sharply from authentic notices <code>S01</code> and <code>S09</code>.</td>
+          <td>Formatting variance does not definitively prove forgery.</td>
+        </tr>
+        <tr>
+          <td><strong>M05</strong></td>
+          <td><code>news_clip.jpg</code></td>
+          <td><span class="tag tag-disinfo">Manipulated Media</span></td>
+          <td>Broadcaster web archive confirms headline was never aired; compression artifacts on chyron text.</td>
+          <td>Original broadcast master tape unavailable.</td>
+        </tr>
+        <tr>
+          <td><strong>M06</strong></td>
+          <td><code>status_page.png</code></td>
+          <td><span class="tag tag-verified">Authentic / Misleading</span></td>
+          <td>Direct pixel match with status page <code>S05</code>; documents routine maintenance, not attack.</td>
+          <td>Image is genuine, but framing is deceptive.</td>
+        </tr>
+        <tr>
+          <td><strong>M07</strong></td>
+          <td><code>employee_chat.png</code></td>
+          <td><span class="tag tag-fake">Unverified / Fake</span></td>
+          <td>Generic handles (<code>Dev1</code>, <code>Ops_Lead</code>), zero corporate telemetry or timestamps.</td>
+          <td>Private messaging servers cannot be audited without access.</td>
+        </tr>
+        <tr>
+          <td><strong>M08</strong></td>
+          <td><code>map.png</code></td>
+          <td><span class="tag tag-fake">Unverified Graphic</span></td>
+          <td>Lacks geographic data sources; outage perimeters align with weather storm advisories.</td>
+          <td>Underlying GIS shapefile uncredited.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 9 & 10 -->
+  <section>
+    <h2>9. Individual Intelligence Assessment</h2>
+    <div class="callout callout-success">
+      <strong>Key Judgment 1:</strong> Intermittent outages resulted from routine maintenance; no adversary penetration occurred. <span class="tag tag-high">Confidence: High</span><br>
+      <em>Evidence:</em> <code>S01</code>, <code>S05</code>, <code>S09</code>. All circulating proof artifacts are demonstrably reused, altered, or fabricated.
+    </div>
+    <div class="callout callout-success">
+      <strong>Key Judgment 2:</strong> The claim that 25,000 customer records leaked is a complete hoax. <span class="tag tag-high">Confidence: High</span><br>
+      <em>Evidence:</em> <code>M03</code> contains obvious placeholder values. Zero leaked dumps appeared on breach forums.
+    </div>
+    <div class="callout callout-warning">
+      <strong>Key Judgment 3:</strong> The campaign exhibits synthetic, automated amplification. <span class="tag tag-high">Confidence: High</span><br>
+      <em>Evidence:</em> 120 posts rely on only 14 text strings released at a deterministic 20-minute cadence.
+    </div>
+    <div class="callout callout-danger">
+      <strong>Key Judgment 4:</strong> Specific actor attribution cannot be established. <span class="tag tag-med">Confidence: Medium</span><br>
+      <em>Evidence:</em> Synthetic simulation data lacks C2 infrastructure logs, server IPs, or financial breadcrumbs.
+    </div>
+
+    <h2>10. Defensive Information-Warfare Response Plan</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Operational Actions</th>
+          <th>Owner</th>
+          <th>Key Output / Deliverable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>0&ndash;2 Hours</strong><br><em>Triage</em></td>
+          <td>OT/IT teams audit SIEM logs to confirm portal restoration; legal team cryptographically hashes circulating disinformation posts.</td>
+          <td>Incident Director, Security</td>
+          <td>Single verified fact log; frozen ad-hoc employee commentary.</td>
+        </tr>
+        <tr>
+          <td><strong>2&ndash;24 Hours</strong><br><em>Counter-Messaging</em></td>
+          <td>Deploy side-by-side visual debunks of <code>M01</code> and <code>M05</code>; launch real-time system health dashboard; report inauthentic bot clusters.</td>
+          <td>Comms, Legal</td>
+          <td>Proactive truth dashboard; multi-platform abuse filings.</td>
+        </tr>
+        <tr>
+          <td><strong>24&ndash;72 Hours</strong><br><em>Stabilization</em></td>
+          <td>Publish technical FAQ <code>S09</code>; engage third-party cybersecurity audit firm; conduct direct customer reassurance briefings.</td>
+          <td>Customer Support, Exec</td>
+          <td>Independent audit validation; customer security advisory.</td>
+        </tr>
+        <tr>
+          <td><strong>Long Term</strong><br><em>Resilience</em></td>
+          <td>Implement C2PA cryptographic provenance on all public notices; mandate 48h advance maintenance disclosures; conduct cognitive red-teaming.</td>
+          <td>Executive Board, CISO</td>
+          <td>Hardened communications infrastructure; annual crisis drill.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 11 & References -->
+  <section>
+    <h2>11. Conclusion & Academic References</h2>
+    <p>The AsteriaGrid investigation confirms that routine operational maintenance was weaponized through an aggressive, synthetic influence campaign. Modern cyber defense requires coupling operational cybersecurity with active cognitive protection and evidence-led counter-messaging.</p>
+
+    <h3>References (APA 7th Edition)</h3>
+    <ol>
+      <li>Al-Khateeb, S., & Agarwal, N. (2019). <em>Understanding Strategic Information Operations in Social Media</em>. Cambridge University Press.</li>
+      <li>Brandes, U. (2001). A faster algorithm for betweenness centrality. <em>Journal of Mathematical Sociology</em>, 25(2), 163&ndash;177.</li>
+      <li>Bradshaw, S., & Howard, P. N. (2019). <em>The Global Disinformation Order: Organised Social Media Manipulation</em>. Oxford University.</li>
+      <li>Director of National Intelligence (ODNI). (2015). <em>Intelligence Community Directive (ICD) 203: Analytic Standards</em>.</li>
+      <li>Lewandowsky, S., et al. (2012). Misinformation and its correction: Continued influence. <em>Psychological Science in the Public Interest</em>, 13(3), 106&ndash;131.</li>
+      <li>Page, L., Brin, S., Motwani, R., & Winograd, T. (1999). <em>The PageRank Citation Ranking: Bringing Order to the Web</em>. Stanford InfoLab.</li>
+      <li>Wardle, C., & Derakhshan, H. (2017). <em>Information Disorder: Toward an interdisciplinary framework</em>. Council of Europe.</li>
+      <li>AsteriaGrid Synthetic Incident Dataset. (2026). IE4032 Information Cyberwarfare Assignment 2.</li>
+    </ol>
+  </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+GRIDTRUTH BLOG — 12 October 2026, 09:47
+Headline: 25,000 AsteriaGrid records leaked?
+The article asserts that a large number of records were exposed. It links to a screenshot rather than a downloadable dataset or independent technical evidence.

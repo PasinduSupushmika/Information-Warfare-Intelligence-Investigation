@@ -1,0 +1,11 @@
+source_id,source_name,source_type,publication_time,summary
+S01,AsteriaGrid Official Notice,Official organizational statement,2026-10-12 09:20,No evidence of customer-data exposure; service disruption was linked to routine maintenance.
+S02,MetroTech Daily,News-style article,2026-10-12 10:05,Reports an alleged intrusion but cites unnamed online posts rather than primary evidence.
+S03,CyberWatch Forum,Forum thread,2026-10-12 08:22,Claims an internal screenshot proves compromise; screenshot provenance is unclear.
+S04,GridTruth Blog,Independent blog,2026-10-12 09:47,"Claims 25,000 records were leaked; provides no verifiable dataset or primary source."
+S05,AsteriaGrid Status Page,Official status page,2026-10-12 08:45,Shows intermittent service disruption; no confirmed security incident.
+S06,TechLens Review,Technology commentary,2026-10-12 12:30,Discusses the spread of the claim and notes lack of technical evidence.
+S07,Community Safety Page,Community page,2026-10-12 09:02,Repeats the breach claim and asks followers to share it.
+S08,Independent Research Note,Analyst note,2026-10-12 14:00,Highlights repeated wording and synchronized posting among a small cluster.
+S09,AsteriaGrid FAQ,Official FAQ,2026-10-12 15:10,Explains that service instability can occur during scheduled maintenance.
+S10,Archive Snapshot,Archived web copy,2026-10-11 16:00,Shows that one image circulating on 12 October existed online before the alleged incident.

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 950" width="100%" height="100%">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="16" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+    <marker id="arrow-high" viewBox="0 0 10 10" refX="18" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48" />
+    </marker>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="1600" height="950" fill="url(#bg)" />
+  <text x="50" y="45" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="bold" fill="#f8fafc">AsteriaGrid Information Warfare Propagation Network (N=120, E=117)</text>
+  <text x="50" y="70" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#94a3b8">Directed information diffusion graph (Parent -&gt; Child). Nodes sized by PageRank and colored by Out-Degree amplification hub status.</text>
+  <g transform="translate(1080, 25)">
+    <rect x="0" y="0" width="480" height="55" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <circle cx="20" cy="20" r="7" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="35" y="24" font-family="sans-serif" font-size="11" fill="#f8fafc">Primary Hub (Out-Degree &ge; 4)</text>
+    <circle cx="195" cy="20" r="6" fill="#f59e0b" stroke="#ffffff" stroke-width="1"/>
+    <text x="208" y="24" font-family="sans-serif" font-size="11" fill="#f8fafc">Secondary Hub (Out-Deg = 3)</text>
+    <circle cx="360" cy="20" r="5" fill="#38bdf8" stroke="#ffffff" stroke-width="1"/>
+    <text x="372" y="24" font-family="sans-serif" font-size="11" fill="#f8fafc">Leaf / Relay Node</text>
+    <circle cx="20" cy="42" r="5" fill="#a855f7" stroke="#ffffff" stroke-width="1"/>
+    <text x="35" y="45" font-family="sans-serif" font-size="11" fill="#f8fafc">Origin / Root Seed (P001, P008, P019)</text>
+    <line x1="260" y1="42" x2="300" y2="42" stroke="#e11d48" stroke-width="2" marker-end="url(#arrow-high)"/>
+    <text x="310" y="45" font-family="sans-serif" font-size="11" fill="#f8fafc">Major Propagation Path</text>
+  </g>
+  <line x1="160" y1="292.5" x2="231.1" y2="356.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="160" y1="292.5" x2="231.1" y2="228.3" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="800" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="590" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="730" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="660" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="450" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="380" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="580" y1="450" x2="373.3" y2="271.1" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="231.1" y1="356.7" x2="580" y2="310" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="580" y1="380" x2="760" y2="698.9" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="660" x2="760" y2="784.4" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="160" y1="292.5" x2="400" y2="613.3" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="160" y1="292.5" x2="400" y2="741.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="231.1" y1="228.3" x2="580" y2="520" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="220" y1="835" x2="400" y2="860" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="271.1" x2="444.4" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="590" x2="760" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="310" x2="373.3" y2="185.6" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="356.7" x2="515.6" y2="196.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="400" y1="613.3" x2="580" y2="240" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="196.2" x2="586.7" y2="485" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="400" y1="860" x2="580" y2="810" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="271.1" x2="444.4" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="520" x2="373.3" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="810" x2="760" y2="885" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="580" y1="240" x2="760" y2="527.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="196.2" x2="586.7" y2="562" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="356.7" x2="515.6" y2="581.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="196.2" x2="586.7" y2="331" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="356.7" x2="444.4" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="185.6" x2="444.4" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="373.3" y1="185.6" x2="444.4" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="331" x2="657.8" y2="793" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="485" x2="657.8" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="485" x2="515.6" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="741.7" x2="515.6" y2="292.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="331" x2="657.8" y2="254" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="613.3" x2="515.6" y2="677.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="254" x2="728.9" y2="430" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="562" x2="657.8" y2="562" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="254" x2="728.9" y2="760" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="581.2" x2="586.7" y2="177" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="292.5" x2="586.7" y2="716" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="430" x2="800" y2="800" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="485" x2="586.7" y2="639" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="228.3" x2="515.6" y2="388.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="444.4" y1="228.3" x2="515.6" y2="773.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="430" x2="800" y2="590" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="177" x2="657.8" y2="408" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="292.5" x2="586.7" y2="408" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="177" x2="657.8" y2="331" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="430" x2="800" y2="520" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="408" x2="728.9" y2="210" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="388.8" x2="586.7" y2="254" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="210" x2="800" y2="310" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="331" x2="728.9" y2="540" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="515.6" y1="388.8" x2="586.7" y2="793" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="210" x2="800" y2="380" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="254" x2="657.8" y2="639" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="408" x2="657.8" y2="177" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="210" x2="800" y2="660" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="800" y1="590" x2="871.1" y2="698.9" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="520" x2="871.1" y2="271.1" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="310" x2="871.1" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="586.7" y1="254" x2="657.8" y2="716" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="356.7" x2="942.2" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="271.1" x2="942.2" y2="677.5" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="177" x2="728.9" y2="320" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="657.8" y1="177" x2="728.9" y2="650" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="356.7" x2="942.2" y2="164.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="540" x2="800" y2="240" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="271.1" x2="942.2" y2="292.5" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="800" y1="380" x2="871.1" y2="442.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="320" x2="800" y2="450" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="800" y1="240" x2="871.1" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="320" x2="800" y2="730" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="271.1" x2="942.2" y2="228.3" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="728.9" y1="320" x2="800" y2="170" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="442.2" x2="942.2" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="164.2" x2="1013.3" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="228.3" x2="1084.4" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="170" x2="871.1" y2="784.4" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="408" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="942.2" y1="292.5" x2="1013.3" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="228.3" x2="1013.3" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="450" x2="871.1" y2="185.6" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="800" y1="170" x2="871.1" y2="527.8" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="228.3" x2="1084.4" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="741.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="420.8" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="805.8" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1155.6" y1="408" x2="1226.7" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="331" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1155.6" y1="331" x2="1226.7" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="793" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1084.4" y1="228.3" x2="1155.6" y2="716" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1013.3" y1="485" x2="1084.4" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="185.6" x2="942.2" y2="356.7" stroke="#f43f5e" stroke-width="1.8" stroke-opacity="0.75" marker-end="url(#arrow-high)" />
+  <line x1="1084.4" y1="485" x2="1155.6" y2="177" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="356.7" x2="1155.6" y2="254" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="871.1" y1="527.8" x2="942.2" y2="549.2" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="356.7" x2="1013.3" y2="356.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1155.6" y1="177" x2="1226.7" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="356.7" x2="1084.4" y2="613.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="356.7" x2="1155.6" y2="562" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="942.2" y1="420.8" x2="1013.3" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1226.7" y1="356.7" x2="1297.8" y2="677.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1155.6" y1="254" x2="1226.7" y2="228.3" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1226.7" y1="485" x2="1297.8" y2="292.5" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="356.7" x2="1155.6" y2="639" stroke="#fbbf24" stroke-width="1.2" stroke-opacity="0.6" marker-end="url(#arrow)" />
+  <line x1="1084.4" y1="613.3" x2="1155.6" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1297.8" y1="292.5" x2="1368.9" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1013.3" y1="356.7" x2="1084.4" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1368.9" y1="485" x2="1440" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1155.6" y1="177" x2="1226.7" y2="741.7" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <line x1="1226.7" y1="228.3" x2="1297.8" y2="485" stroke="#475569" stroke-width="0.8" stroke-opacity="0.4" marker-end="url(#arrow)" />
+  <circle cx="871.1" cy="185.6" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P090 | Account_32 | Video Caption | Out-Deg: 4 | PR: 0.009702</title>
+  </circle>
+  <text x="871.1" y="169.6" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P090 (Account_32)</text>
+  <circle cx="1084.4" cy="228.3" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P085 | Account_37 | Video Caption | Out-Deg: 4 | PR: 0.00887</title>
+  </circle>
+  <text x="1084.4" y="212.3" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P085 (Account_37)</text>
+  <circle cx="231.1" cy="228.3" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P003 | Account_15 | Blog | Out-Deg: 4 | PR: 0.00495</title>
+  </circle>
+  <text x="231.1" y="212.3" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P003 (Account_15)</text>
+  <circle cx="231.1" cy="356.7" r="11" fill="#ef4444" stroke="#fee2e2" stroke-width="1.5">
+    <title>P002 | Account_08 | Forum | Out-Deg: 4 | PR: 0.00495</title>
+  </circle>
+  <text x="231.1" y="340.7" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P002 (Account_08)</text>
+  <circle cx="160" cy="292.5" r="12" fill="#a855f7" stroke="#f3e8ff" stroke-width="1.5">
+    <title>P001 | Account_01 | Microblog | Out-Deg: 4 | PR: 0.004083</title>
+  </circle>
+  <text x="160" y="275.5" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P001 (Account_01)</text>
+  <circle cx="1084.4" cy="356.7" r="9.6" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P101 | Account_31 | Microblog | Out-Deg: 3 | PR: 0.012391</title>
+  </circle>
+  <text x="1084.4" y="342.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P101 (Account_31)</text>
+  <circle cx="728.9" cy="210" r="9.1" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P057 | Account_38 | Forum | Out-Deg: 3 | PR: 0.011283</title>
+  </circle>
+  <text x="728.9" y="195.9" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P057 (Account_38)</text>
+  <circle cx="871.1" cy="271.1" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P067 | Account_29 | Forum | Out-Deg: 3 | PR: 0.009223</title>
+  </circle>
+  <text x="871.1" y="257.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P067 (Account_29)</text>
+  <circle cx="728.9" cy="320" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P072 | Account_25 | Forum | Out-Deg: 3 | PR: 0.008921</title>
+  </circle>
+  <text x="728.9" y="306" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P072 (Account_25)</text>
+  <circle cx="515.6" cy="196.2" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P023 | Account_37 | Blog | Out-Deg: 3 | PR: 0.007344</title>
+  </circle>
+  <text x="515.6" y="182.2" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P023 (Account_37)</text>
+  <circle cx="728.9" cy="430" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5">
+    <title>P043 | Account_19 | Blog | Out-Deg: 3 | PR: 0.006931</title>
+  </circle>
+  <text x="728.9" y="416" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P043 (Account_19)</text>
+  <circle cx="1155.6" cy="177" r="9.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P103 | Account_05 | Blog | Out-Deg: 2 | PR: 0.011622</title>
+  </circle>
+  <circle cx="657.8" cy="177" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P064 | Account_08 | Community Page | Out-Deg: 2 | PR: 0.011384</title>
+  </circle>
+  <circle cx="1013.3" cy="228.3" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P084 | Account_30 | Community Page | Out-Deg: 2 | PR: 0.011264</title>
+  </circle>
+  <circle cx="515.6" cy="292.5" r="8.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P040 | Account_37 | Video Caption | Out-Deg: 2 | PR: 0.010605</title>
+  </circle>
+  <circle cx="586.7" cy="177" r="8.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P046 | Account_40 | Microblog | Out-Deg: 2 | PR: 0.010325</title>
+  </circle>
+  <circle cx="871.1" cy="356.7" r="8.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P068 | Account_36 | Blog | Out-Deg: 2 | PR: 0.010271</title>
+  </circle>
+  <circle cx="1013.3" cy="356.7" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P106 | Account_26 | Microblog | Out-Deg: 2 | PR: 0.009306</title>
+  </circle>
+  <circle cx="373.3" cy="185.6" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P022 | Account_30 | Forum | Out-Deg: 2 | PR: 0.008448</title>
+  </circle>
+  <circle cx="373.3" cy="271.1" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P011 | Account_32 | Microblog | Out-Deg: 2 | PR: 0.008448</title>
+  </circle>
+  <circle cx="444.4" cy="228.3" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P036 | Account_09 | Microblog | Out-Deg: 2 | PR: 0.007673</title>
+  </circle>
+  <circle cx="444.4" cy="356.7" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P020 | Account_15 | Video Caption | Out-Deg: 2 | PR: 0.007673</title>
+  </circle>
+  <circle cx="515.6" cy="388.8" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P050 | Account_28 | Video Caption | Out-Deg: 2 | PR: 0.007344</title>
+  </circle>
+  <circle cx="586.7" cy="254" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P058 | Account_05 | Blog | Out-Deg: 2 | PR: 0.007204</title>
+  </circle>
+  <circle cx="657.8" cy="254" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P041 | Account_05 | Microblog | Out-Deg: 2 | PR: 0.006702</title>
+  </circle>
+  <circle cx="800" cy="170" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P082 | Account_16 | Forum | Out-Deg: 2 | PR: 0.006611</title>
+  </circle>
+  <circle cx="586.7" cy="331" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P033 | Account_28 | Blog | Out-Deg: 2 | PR: 0.006164</title>
+  </circle>
+  <circle cx="1368.9" cy="485" r="10.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P116 | Account_17 | Microblog | Out-Deg: 1 | PR: 0.014072</title>
+  </circle>
+  <circle cx="800" cy="240" r="10.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P075 | Account_06 | Video Caption | Out-Deg: 1 | PR: 0.013674</title>
+  </circle>
+  <circle cx="515.6" cy="485" r="10.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P039 | Account_30 | Community Page | Out-Deg: 1 | PR: 0.013657</title>
+  </circle>
+  <circle cx="1297.8" cy="292.5" r="9.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P113 | Account_36 | Blog | Out-Deg: 1 | PR: 0.011752</title>
+  </circle>
+  <circle cx="728.9" cy="540" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P060 | Account_19 | Video Caption | Out-Deg: 1 | PR: 0.011283</title>
+  </circle>
+  <circle cx="444.4" cy="485" r="9.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P034 | Account_35 | Community Page | Out-Deg: 1 | PR: 0.011263</title>
+  </circle>
+  <circle cx="1226.7" cy="228.3" r="8.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P112 | Account_29 | Forum | Out-Deg: 1 | PR: 0.010538</title>
+  </circle>
+  <circle cx="580" cy="810" r="8.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P026 | Account_18 | Microblog | Out-Deg: 1 | PR: 0.010503</title>
+  </circle>
+  <circle cx="871.1" cy="442.2" r="8.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P077 | Account_20 | Forum | Out-Deg: 1 | PR: 0.010271</title>
+  </circle>
+  <circle cx="1013.3" cy="485" r="8.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P088 | Account_18 | Blog | Out-Deg: 1 | PR: 0.009774</title>
+  </circle>
+  <circle cx="1226.7" cy="356.7" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P098 | Account_09 | Blog | Out-Deg: 1 | PR: 0.009155</title>
+  </circle>
+  <circle cx="1226.7" cy="485" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P107 | Account_33 | Forum | Out-Deg: 1 | PR: 0.009022</title>
+  </circle>
+  <circle cx="1084.4" cy="485" r="8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P092 | Account_07 | Forum | Out-Deg: 1 | PR: 0.00887</title>
+  </circle>
+  <circle cx="586.7" cy="408" r="7.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P054 | Account_17 | Community Page | Out-Deg: 1 | PR: 0.00859</title>
+  </circle>
+  <circle cx="657.8" cy="331" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P055 | Account_24 | Video Caption | Out-Deg: 1 | PR: 0.008471</title>
+  </circle>
+  <circle cx="657.8" cy="408" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P053 | Account_10 | Blog | Out-Deg: 1 | PR: 0.008471</title>
+  </circle>
+  <circle cx="373.3" cy="356.7" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P028 | Account_32 | Blog | Out-Deg: 1 | PR: 0.008448</title>
+  </circle>
+  <circle cx="942.2" cy="164.2" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P074 | Account_39 | Community Page | Out-Deg: 1 | PR: 0.008448</title>
+  </circle>
+  <circle cx="580" cy="240" r="7.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P024 | Account_04 | Community Page | Out-Deg: 1 | PR: 0.008291</title>
+  </circle>
+  <circle cx="1084.4" cy="613.3" r="7.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P108 | Account_40 | Blog | Out-Deg: 1 | PR: 0.008038</title>
+  </circle>
+  <circle cx="444.4" cy="613.3" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P027 | Account_25 | Forum | Out-Deg: 1 | PR: 0.007673</title>
+  </circle>
+  <circle cx="444.4" cy="741.7" r="7.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P035 | Account_02 | Video Caption | Out-Deg: 1 | PR: 0.007673</title>
+  </circle>
+  <circle cx="1155.6" cy="254" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P104 | Account_12 | Community Page | Out-Deg: 1 | PR: 0.007594</title>
+  </circle>
+  <circle cx="400" cy="860" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P018 | Account_01 | Blog | Out-Deg: 1 | PR: 0.007553</title>
+  </circle>
+  <circle cx="515.6" cy="581.2" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P032 | Account_21 | Forum | Out-Deg: 1 | PR: 0.007344</title>
+  </circle>
+  <text x="515.6" y="568.9" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P032 (Account_21)</text>
+  <circle cx="800" cy="310" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P059 | Account_12 | Community Page | Out-Deg: 1 | PR: 0.00728</title>
+  </circle>
+  <circle cx="800" cy="380" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P062 | Account_34 | Forum | Out-Deg: 1 | PR: 0.00728</title>
+  </circle>
+  <circle cx="871.1" cy="527.8" r="7.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P091 | Account_40 | Microblog | Out-Deg: 1 | PR: 0.006892</title>
+  </circle>
+  <circle cx="942.2" cy="228.3" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P081 | Account_09 | Microblog | Out-Deg: 1 | PR: 0.006696</title>
+  </circle>
+  <circle cx="942.2" cy="292.5" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P076 | Account_13 | Microblog | Out-Deg: 1 | PR: 0.006696</title>
+  </circle>
+  <circle cx="800" cy="450" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P078 | Account_27 | Blog | Out-Deg: 1 | PR: 0.006611</title>
+  </circle>
+  <circle cx="586.7" cy="485" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P025 | Account_11 | Video Caption | Out-Deg: 1 | PR: 0.006164</title>
+  </circle>
+  <circle cx="586.7" cy="562" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P031 | Account_14 | Microblog | Out-Deg: 1 | PR: 0.006164</title>
+  </circle>
+  <circle cx="942.2" cy="356.7" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P102 | Account_38 | Forum | Out-Deg: 1 | PR: 0.006145</title>
+  </circle>
+  <circle cx="942.2" cy="420.8" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P094 | Account_21 | Community Page | Out-Deg: 1 | PR: 0.006145</title>
+  </circle>
+  <circle cx="800" cy="520" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P056 | Account_31 | Microblog | Out-Deg: 1 | PR: 0.006047</title>
+  </circle>
+  <circle cx="800" cy="590" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P052 | Account_03 | Forum | Out-Deg: 1 | PR: 0.006047</title>
+  </circle>
+  <circle cx="1155.6" cy="331" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P097 | Account_02 | Forum | Out-Deg: 1 | PR: 0.005968</title>
+  </circle>
+  <circle cx="1155.6" cy="408" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P087 | Account_11 | Forum | Out-Deg: 1 | PR: 0.005968</title>
+  </circle>
+  <circle cx="580" cy="310" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P012 | Account_39 | Forum | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="380" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P010 | Account_24 | Video Caption | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="450" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P009 | Account_17 | Community Page | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="520" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P017 | Account_34 | Forum | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="590" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P005 | Account_29 | Video Caption | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="660" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P007 | Account_03 | Forum | Out-Deg: 1 | PR: 0.005135</title>
+  </circle>
+  <circle cx="400" cy="613.3" r="6.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P015 | Account_20 | Video Caption | Out-Deg: 1 | PR: 0.00495</title>
+  </circle>
+  <circle cx="220" cy="835" r="12" fill="#a855f7" stroke="#f3e8ff" stroke-width="1.5">
+    <title>P008 | Account_10 | Blog | Out-Deg: 1 | PR: 0.004083</title>
+  </circle>
+  <text x="220" y="818" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P008 (Account_10)</text>
+  <circle cx="1440" cy="485" r="11.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P118 | Account_31 | Blog | Out-Deg: 0 | PR: 0.016044</title>
+  </circle>
+  <circle cx="871.1" cy="613.3" r="11.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P079 | Account_34 | Community Page | Out-Deg: 0 | PR: 0.015706</title>
+  </circle>
+  <circle cx="586.7" cy="639" r="11.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P049 | Account_21 | Community Page | Out-Deg: 0 | PR: 0.015691</title>
+  </circle>
+  <circle cx="1297.8" cy="485" r="9.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P120 | Account_05 | Video Caption | Out-Deg: 0 | PR: 0.01304</title>
+  </circle>
+  <circle cx="760" cy="885" r="9.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P029 | Account_39 | Community Page | Out-Deg: 0 | PR: 0.013011</title>
+  </circle>
+  <circle cx="942.2" cy="485" r="9.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P083 | Account_23 | Blog | Out-Deg: 0 | PR: 0.012813</title>
+  </circle>
+  <circle cx="1297.8" cy="677.5" r="9.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P111 | Account_22 | Microblog | Out-Deg: 0 | PR: 0.011865</title>
+  </circle>
+  <circle cx="760" cy="527.8" r="9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P030 | Account_06 | Video Caption | Out-Deg: 0 | PR: 0.01113</title>
+  </circle>
+  <circle cx="1155.6" cy="485" r="8.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P115 | Account_10 | Video Caption | Out-Deg: 0 | PR: 0.010915</title>
+  </circle>
+  <circle cx="515.6" cy="677.5" r="8.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P042 | Account_12 | Forum | Out-Deg: 0 | PR: 0.010605</title>
+  </circle>
+  <circle cx="942.2" cy="549.2" r="8.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P105 | Account_19 | Video Caption | Out-Deg: 0 | PR: 0.009941</title>
+  </circle>
+  <circle cx="1013.3" cy="613.3" r="8.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P089 | Account_25 | Community Page | Out-Deg: 0 | PR: 0.009774</title>
+  </circle>
+  <circle cx="657.8" cy="485" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P038 | Account_23 | Blog | Out-Deg: 0 | PR: 0.009322</title>
+  </circle>
+  <circle cx="657.8" cy="562" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P044 | Account_26 | Community Page | Out-Deg: 0 | PR: 0.009322</title>
+  </circle>
+  <circle cx="1013.3" cy="741.7" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P110 | Account_14 | Video Caption | Out-Deg: 0 | PR: 0.009306</title>
+  </circle>
+  <circle cx="871.1" cy="698.9" r="8.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P066 | Account_22 | Microblog | Out-Deg: 0 | PR: 0.009223</title>
+  </circle>
+  <circle cx="1226.7" cy="613.3" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P096 | Account_35 | Microblog | Out-Deg: 0 | PR: 0.009155</title>
+  </circle>
+  <circle cx="1226.7" cy="741.7" r="8.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P119 | Account_38 | Community Page | Out-Deg: 0 | PR: 0.009022</title>
+  </circle>
+  <circle cx="728.9" cy="650" r="8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P073 | Account_32 | Blog | Out-Deg: 0 | PR: 0.008921</title>
+  </circle>
+  <circle cx="586.7" cy="716" r="7.9" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P047 | Account_07 | Forum | Out-Deg: 0 | PR: 0.00859</title>
+  </circle>
+  <circle cx="760" cy="613.3" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P021 | Account_23 | Microblog | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="942.2" cy="613.3" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P070 | Account_10 | Video Caption | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="760" cy="698.9" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P013 | Account_06 | Blog | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="760" cy="784.4" r="7.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P014 | Account_13 | Community Page | Out-Deg: 0 | PR: 0.008448</title>
+  </circle>
+  <circle cx="1084.4" cy="741.7" r="7.6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P117 | Account_24 | Forum | Out-Deg: 0 | PR: 0.008038</title>
+  </circle>
+  <circle cx="1155.6" cy="562" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P109 | Account_07 | Community Page | Out-Deg: 0 | PR: 0.007594</title>
+  </circle>
+  <circle cx="1155.6" cy="639" r="7.4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P114 | Account_03 | Community Page | Out-Deg: 0 | PR: 0.007594</title>
+  </circle>
+  <circle cx="515.6" cy="773.8" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P051 | Account_36 | Microblog | Out-Deg: 0 | PR: 0.007344</title>
+  </circle>
+  <circle cx="800" cy="660" r="7.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P065 | Account_15 | Video Caption | Out-Deg: 0 | PR: 0.00728</title>
+  </circle>
+  <circle cx="586.7" cy="793" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P061 | Account_27 | Microblog | Out-Deg: 0 | PR: 0.007204</title>
+  </circle>
+  <circle cx="657.8" cy="639" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P063 | Account_01 | Blog | Out-Deg: 0 | PR: 0.007145</title>
+  </circle>
+  <circle cx="657.8" cy="716" r="7.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P069 | Account_03 | Community Page | Out-Deg: 0 | PR: 0.007145</title>
+  </circle>
+  <circle cx="728.9" cy="760" r="7.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P045 | Account_33 | Video Caption | Out-Deg: 0 | PR: 0.006931</title>
+  </circle>
+  <circle cx="871.1" cy="784.4" r="7.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P086 | Account_04 | Microblog | Out-Deg: 0 | PR: 0.006892</title>
+  </circle>
+  <circle cx="657.8" cy="793" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P037 | Account_16 | Forum | Out-Deg: 0 | PR: 0.006702</title>
+  </circle>
+  <circle cx="942.2" cy="677.5" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P071 | Account_18 | Microblog | Out-Deg: 0 | PR: 0.006696</title>
+  </circle>
+  <circle cx="800" cy="730" r="7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P080 | Account_01 | Video Caption | Out-Deg: 0 | PR: 0.006611</title>
+  </circle>
+  <circle cx="942.2" cy="741.7" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P093 | Account_14 | Blog | Out-Deg: 0 | PR: 0.006145</title>
+  </circle>
+  <circle cx="942.2" cy="805.8" r="6.8" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P095 | Account_28 | Video Caption | Out-Deg: 0 | PR: 0.006145</title>
+  </circle>
+  <circle cx="800" cy="800" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P048 | Account_14 | Blog | Out-Deg: 0 | PR: 0.006047</title>
+  </circle>
+  <circle cx="1155.6" cy="716" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P100 | Account_23 | Video Caption | Out-Deg: 0 | PR: 0.005968</title>
+  </circle>
+  <circle cx="1155.6" cy="793" r="6.7" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P099 | Account_16 | Community Page | Out-Deg: 0 | PR: 0.005968</title>
+  </circle>
+  <circle cx="580" cy="730" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P006 | Account_36 | Microblog | Out-Deg: 0 | PR: 0.005135</title>
+  </circle>
+  <circle cx="580" cy="800" r="6.3" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P004 | Account_22 | Community Page | Out-Deg: 0 | PR: 0.005135</title>
+  </circle>
+  <circle cx="400" cy="741.7" r="6.2" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+    <title>P016 | Account_27 | Microblog | Out-Deg: 0 | PR: 0.00495</title>
+  </circle>
+  <circle cx="180" cy="880" r="12" fill="#a855f7" stroke="#f3e8ff" stroke-width="1.5">
+    <title>P019 | Account_08 | Community Page | Out-Deg: 0 | PR: 0.004083</title>
+  </circle>
+  <text x="180" y="863" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" filter="url(#glow)">P019 (Account_08)</text>
+  <g transform="translate(50, 110)">
+    <rect x="0" y="0" width="220" height="95" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2" opacity="0.95"/>
+    <text x="12" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#a5b4fc">NARRATIVE ORIGIN: P001</text>
+    <text x="12" y="38" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Time: 2026-10-12 08:00 UTC</text>
+    <text x="12" y="54" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Account_01 (Microblog)</text>
+    <text x="12" y="70" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Out-Degree: 4 | Attached: M01</text>
+    <text x="12" y="86" font-family="sans-serif" font-size="9" fill="#93c5fd">Subtree covers 115 / 120 nodes</text>
+  </g>
+  <g transform="translate(50, 780)">
+    <rect x="0" y="0" width="220" height="85" rx="6" fill="#3b0764" stroke="#c084fc" stroke-width="1.2" opacity="0.95"/>
+    <text x="12" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#e9d5ff">DATA LEAK MUTATION: P008</text>
+    <text x="12" y="38" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Time: 2026-10-12 09:59 UTC</text>
+    <text x="12" y="54" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">Account_10 (Blog)</text>
+    <text x="12" y="70" font-family="sans-serif" font-size="9.5" fill="#e2e8f0">"customer records shared"</text>
+  </g>
+</svg>

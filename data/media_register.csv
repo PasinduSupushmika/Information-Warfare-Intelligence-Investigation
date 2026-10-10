@@ -1,0 +1,9 @@
+media_id,filename,claimed_use,claim_context,investigative_note,assessment_hint
+M01,power_control_room.jpg,Photograph,Circulating claim: image shows AsteriaGrid attack,Archive Snapshot indicates image predates incident by several months.,Old/recontextualized
+M02,error_dashboard.png,Screenshot,Claimed to show breached systems,Contains no unique identifiers; similar dashboard appears in training material.,Unverified
+M03,leak_sample.png,Screenshot,Claimed sample of customer records,Fields contain obvious placeholder values and repeated patterns.,Likely fabricated
+M04,maintenance_notice.png,Screenshot,Claimed internal notice about attack,Formatting differs from official notices in S01/S09.,Questionable
+M05,news_clip.jpg,Image,Claimed to be breaking-news report,Headline uses wording absent from the publisher's archived page.,Manipulated/uncertain
+M06,status_page.png,Screenshot,Claimed proof of prolonged outage,Consistent with S05 but does not establish cyberattack.,Authentic but misleading context
+M07,employee_chat.png,Screenshot,Claimed internal employee discussion,No provenance or authentication; names are generic.,Unverified
+M08,map.png,Graphic,Claimed map of affected infrastructure,Legend lacks source and cannot be independently tied to incident.,Unverified

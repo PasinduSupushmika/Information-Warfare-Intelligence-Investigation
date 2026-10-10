@@ -1,0 +1,2 @@
+ASTERIAGRID FAQ
+Scheduled maintenance can cause temporary service instability. Service-status information should be checked against the official status page. Screenshots and social-media claims should not be treated as confirmation of a security incident unless independently verified.
